@@ -1,0 +1,34 @@
+#include <Arduino.h>
+#include <Wire.h>
+#include <ArdusatSDK.h>
+
+Temperature temp;
+
+void setup(void)
+{
+  serial.begin(9600);
+  accel.begin();
+
+  serial.println("");
+}
+
+
+void loop(void)
+{
+  accel.read();
+  
+  accel_mag = sqrt(accel.x * accel.x + accel.y * accel.y + accel.z * accel.z);
+
+  serial.println(accel.toJSON("accelerometer"));
+  serial.println(valueToJSON("Accel_Mag", DATA_UNIT_METER_PER_SECONDSQUARED, accel_mag));
+  serial.println(valueToJSON("G-Force", DATA_UNIT_METER_PER_SECONDSQUARED, accel_mag / 9.8));
+
+  delay(10);
+}
+    wire.begin(){
+        if(acceleration accel => 0 && acceleration accel < 9.8)
+            wire.write("less");
+        else if(acceleration accel => 9.8)
+            wire.write("greater"):
+    }
+
